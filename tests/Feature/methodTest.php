@@ -100,5 +100,25 @@ class MethodTest extends TestCase
 
 
     }
+    public function testDelete()
+    {
+        $pass=new Pasport();
+        $pass->nom='amine1';
+        $pass->prenom='mourid';
+        $pass->email='email@email.com';
+        $pass->NUP='1234';
+        $pass->CIN='1234';
+        $pass->save();
+        $this->assertDatabaseHas('pasports',$pass->toArray());
+
+      $this->delete("pasports/{$pass->id}")
+      ->assertStatus(302)
+      ->assertSessionHas('delete');
+      $this->assertEquals(session('delete'),'the delete done successfuly !');
+      $this->assertDatabaseMissing('pasports',[
+          'nom'=>$pass->nom
+      ]);
+
+    }
 
 }
