@@ -19,10 +19,11 @@ class PasportController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-     public function __construct()
+   /*  public function __construct()
      {
-         $this->middleware('auth');
-     }
+        // $this->middleware('auth');
+         
+     }*/
 
 
    public function index()
@@ -47,8 +48,9 @@ class PasportController extends Controller
     $da->email=$v->input('email');
     $da->CIN=$v->input('CIN');
     $da->NUP=$v->input('NUP');
-    $da->user_id=auth::user()->id;
+    $da->user_id='1';
     $da->save();
+    session()->flash('add','the addition done successfuly!!');
     return redirect('pasports');
    }
    public function edit($id)

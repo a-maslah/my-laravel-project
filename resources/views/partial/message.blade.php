@@ -5,11 +5,11 @@
         });
     }, 5000);
     </script>
-    @if (session()->has('message1'))
+    @if (session()->has('add'))
     <div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>Success!</strong> 
-            {{session()->get('message1')}}
+            {{session()->get('add')}}
           </div>
     
         
